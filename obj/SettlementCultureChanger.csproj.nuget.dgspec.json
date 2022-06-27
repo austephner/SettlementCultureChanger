@@ -1,0 +1,63 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Modding\\SettlementCultureChanger\\SettlementCultureChanger.csproj": {}
+  },
+  "projects": {
+    "C:\\Modding\\SettlementCultureChanger\\SettlementCultureChanger.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Modding\\SettlementCultureChanger\\SettlementCultureChanger.csproj",
+        "projectName": "SettlementCultureChanger",
+        "projectPath": "C:\\Modding\\SettlementCultureChanger\\SettlementCultureChanger.csproj",
+        "packagesPath": "C:\\Users\\Auste\\.nuget\\packages\\",
+        "outputPath": "C:\\Modding\\SettlementCultureChanger\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\Auste\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Bannerlord.ButterLib": {
+              "include": "Compile",
+              "target": "Package",
+              "version": "[2.1.5, )"
+            },
+            "Bannerlord.MCM": {
+              "include": "Compile",
+              "target": "Package",
+              "version": "[4.3.16, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
