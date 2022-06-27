@@ -1,5 +1,5 @@
 # Settlement Culture Changer
-## Mount &amp; Blade II: Bannerlord
+### Mount &amp; Blade II: Bannerlord
 #### Summary
 Allows for configurable realignment behaviour of a settlement's culture in Mount &amp; Blade II: Bannerlord
 
