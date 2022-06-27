@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7c0f6eed-311d-4926-aff8-950ae9825f60" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/SettlementCultureChanger.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SettlementCultureChanger.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SettlementCultureChanger.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/SettlementCultureChanger.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/SettlementCultureChanger.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/SettlementCultureChanger.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +39,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656356704171</updated>
-      <workItem from="1656356709753" duration="260000" />
+      <workItem from="1656356709753" duration="792000" />
     </task>
     <servers />
   </component>

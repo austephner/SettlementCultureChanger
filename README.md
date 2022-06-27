@@ -22,4 +22,4 @@ Allows for configurable realignment behaviour of a settlement's culture in Mount
 ## Usage
 
 ## Developer Notes
-- When opening the solution, you may have to manually change/adjust the assembly references for all TaleWorld DLL's and MCM DLL's. This API doesn't assume that every dev has installed M&B2 into the same Steam directory.
+- When opening the solution, you may have to manually change/adjust the assembly references for all TaleWorld DLL's, Module DLL's, and MCM DLL's. This API doesn't assume that every dev has installed M&B2 into the same Steam directory.
