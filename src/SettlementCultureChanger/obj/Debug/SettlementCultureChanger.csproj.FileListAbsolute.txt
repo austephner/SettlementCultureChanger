@@ -7,3 +7,10 @@ C:\Modding\SettlementCultureChanger-mb2b\src\SettlementCultureChanger\obj\Debug\
 C:\Modding\SettlementCultureChanger-mb2b\src\SettlementCultureChanger\obj\Debug\SettlementCultureChanger.pdb
 C:\Modding\SettlementCultureChanger-mb2b\bin\Win64_Shipping_Client\SettlementCultureChanger.dll
 C:\Modding\SettlementCultureChanger-mb2b\bin\Win64_Shipping_Client\SettlementCultureChanger.pdb
+C:\Modding\SettlementCultureChanger\bin\Win64_Shipping_Client\SettlementCultureChanger.dll
+C:\Modding\SettlementCultureChanger\bin\Win64_Shipping_Client\SettlementCultureChanger.pdb
+C:\Modding\SettlementCultureChanger\src\SettlementCultureChanger\obj\Debug\SettlementCultureChanger.csproj.AssemblyReference.cache
+C:\Modding\SettlementCultureChanger\src\SettlementCultureChanger\obj\Debug\SettlementCultureChanger.csproj.CoreCompileInputs.cache
+C:\Modding\SettlementCultureChanger\src\SettlementCultureChanger\obj\Debug\SettlementCultureChanger.csproj.CopyComplete
+C:\Modding\SettlementCultureChanger\src\SettlementCultureChanger\obj\Debug\SettlementCultureChanger.dll
+C:\Modding\SettlementCultureChanger\src\SettlementCultureChanger\obj\Debug\SettlementCultureChanger.pdb

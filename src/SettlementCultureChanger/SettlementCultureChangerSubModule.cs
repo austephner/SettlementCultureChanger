@@ -11,9 +11,9 @@ namespace SettlementCultureChanger
             base.OnSubModuleLoad();
             
             Module.CurrentModule.AddInitialStateOption(new InitialStateOption("Message",
-                new TextObject("Message", null),
+                new TextObject("Test", null),
                 9990,
-                () => { InformationManager.DisplayMessage(new InformationMessage("Hello World!")); },
+                () => { InformationManager.DisplayMessage(new InformationMessage("Test completed")); },
                 () => (false, null)));
         }
     }
