@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c0f6eed-311d-4926-aff8-950ae9825f60" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SettlementCultureChangerSubModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/SettlementCultureChanger.csproj.CopyComplete" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/SettlementCultureChanger.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/SettlementCultureChanger.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/SettlementCultureChanger.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obj/Debug/SettlementCultureChanger.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SubModule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../SubModule.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SettlementCultureChanger/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SettlementCultureChanger/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Class1.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SettlementCultureChanger.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SettlementCultureChanger.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SettlementCultureChanger.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/SettlementCultureChanger.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/SettlementCultureChanger.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/SettlementCultureChanger.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,13 +27,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2BAlJhqBCGp83JHVzPbRZALPUng" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -39,7 +51,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1656356704171</updated>
-      <workItem from="1656356709753" duration="792000" />
+      <workItem from="1656356709753" duration="1598000" />
     </task>
     <servers />
   </component>
@@ -48,7 +60,19 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>

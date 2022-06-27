@@ -16,7 +16,7 @@
          <SubModule>
              <Name value="SettlementCultureChanger"/>
              <DLLName value="SettlementCultureChanger.dll"/>
-             <SubModuleClassType value="SettlementCultureChanger.SCC"/>
+             <SubModuleClassType value="SettlementCultureChanger.SettlementCultureChangerSubModule"/>
              <Tags>
                  <Tag key="DedicatedServerType" value="none" />
                  <Tag key="IsNoRenderModeElement" value="false" />
