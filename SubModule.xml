@@ -1,0 +1,27 @@
+ <Module>
+     <Name value="Settlement Culture Changer"/>
+     <Id value="SettlementCultureChanger"/>
+     <Version value="v0.0.1"/>
+     <SingleplayerModule value="true"/>
+     <MultiplayerModule value="false"/>
+	 <Url value="https://github.com/austephner/SettlementCultureChanger-mb2b" />
+     <DependedModules>
+         <DependedModule Id="Native"/>
+         <DependedModule Id="SandBoxCore"/>
+         <DependedModule Id="Sandbox"/>
+         <DependedModule Id="CustomBattle"/>
+         <DependedModule Id="StoryMode" />
+     </DependedModules>
+     <SubModules>
+         <SubModule>
+             <Name value="SettlementCultureChanger"/>
+             <DLLName value="SettlementCultureChanger.dll"/>
+             <SubModuleClassType value="SettlementCultureChanger.SCC"/>
+             <Tags>
+                 <Tag key="DedicatedServerType" value="none" />
+                 <Tag key="IsNoRenderModeElement" value="false" />
+             </Tags>
+         </SubModule>
+     </SubModules>
+     <Xmls/>
+ </Module>
