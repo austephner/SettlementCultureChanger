@@ -1,7 +1,9 @@
-﻿using MCM.Abstractions.Attributes;
+﻿using System;
+using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Dropdown;
 using MCM.Abstractions.Settings.Base.PerSave;
+using SettlementCultureChanger.Behaviours;
 
 namespace SettlementCultureChanger
 {
@@ -14,11 +16,11 @@ namespace SettlementCultureChanger
         #region GENERAL 
         
         [SettingPropertyGroup("General", GroupOrder = 1)]
-        [SettingPropertyBool("Enabled", HintText = "When enabled, allows for this mod to control the conversion of a settlement's culture.", Order = 1)]
+        [SettingPropertyBool("Enabled", HintText = "When enabled, allows for this mod to control the conversion of a settlement's culture.", Order = 1, RequireRestart = false)]
         public bool enabled { get; set; } = true;
         
         [SettingPropertyGroup("General", GroupOrder = 1)]
-        [SettingPropertyBool("Debug Logging", HintText = "When enabled, this mod will regularly post debug messages in various ways.", Order = 10)]
+        [SettingPropertyBool("Debug Logging", HintText = "When enabled, this mod will regularly post debug messages in various ways.", Order = 10, RequireRestart = false)]
         public bool debugLogging { get; set; } = true;
 
         #endregion
@@ -26,37 +28,41 @@ namespace SettlementCultureChanger
         #region Automatic Conversion
 
         [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
-        [SettingPropertyBool("Enable Automatic Conversion", HintText = "When enabled, a settlement's culture will automatically convert to the \"Culture Source\" over time.", IsToggle = true, Order = 1)]
+        [SettingPropertyBool("Enable Automatic Conversion", HintText = "When enabled, a settlement's culture will automatically convert to the \"Culture Source\" over time.", IsToggle = true, Order = 1, RequireRestart = false)]
         public bool enableAutomaticConversion { get; set; } = true;
 
         [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
-        [SettingPropertyDropdown("Culture Source", HintText = "Determines where the target culture comes from.", Order = 2)]
+        [SettingPropertyDropdown("Culture Source", HintText = "Determines where the target culture comes from.", Order = 2, RequireRestart = false)]
         public DropdownDefault<string> automaticConversionCultureSource { get; set; } = new DropdownDefault<string>(
             new string[]
             {
-                "Try Use Governor, Else Use Owner",
-                "Try Use Governor, Else Nothing",
+                "Prefer Governor, Fallback to Owner",
+                "Governor Only",
                 "Owner Only"
             },
             0);
         
         [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
-        [SettingPropertyDropdown("Population Algorithm", HintText = "Determines what aspect of the population is used to calculate the cultural conversion.", Order = 3)]
-        public DropdownDefault<string> automaticConversionPopulationMode { get; set; } = new DropdownDefault<string>(
+        [SettingPropertyDropdown("Conversion Mode", HintText = "Determines how settlement cultures are converted.", Order = 3, RequireRestart = false)]
+        public DropdownDefault<string> automaticConversionMode { get; set; } = new DropdownDefault<string>(
             new string[]
             {
-                "Random Conversion",
-                "Constant Conversion"
+                "Convert Over Random Time Duration",
+                "Convert Immediately When Ownership Changed"
             },
             0);
 
-        [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
-        [SettingPropertyInteger("Min Civilians Per Day", 1, 1000, Order = 4)]
-        public int minCivilianConversionPerDay { get; set; } = 1;
+        #endregion
 
-        [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
-        [SettingPropertyInteger("Max Civilians Per Day", 1, 1000, Order = 5)]
-        public int maxCivilianConversionPerDay { get; set; } = 5;
+        #region Tools
+
+        [SettingPropertyGroup("Tools & Cheats", GroupOrder = 3)]
+        [SettingPropertyButton("Convert All Settlements to Owner Culture", HintText = "Immediately converts all settlements to their owner's culture.", RequireRestart = false, Content = "Set")]
+        public Action convertAllSettlementsToOwnerCulture { get; set; } = SettlementCultureChangerBehaviour.ConvertAllSettlementsToOwnerCulture;
+        
+        [SettingPropertyGroup("Tools & Cheats", GroupOrder = 3)]
+        [SettingPropertyButton("Convert All Player Settlements to Owner Culture", HintText = "Immediately converts all player's settlements to their owner's culture.", RequireRestart = false, Content = "Set")]
+        public Action convertAllPlayerSettlementsToOwnerCulture { get; set; } = SettlementCultureChangerBehaviour.ConvertAllPlayerSettlementsToOwnerCulture;
 
         #endregion
     }

@@ -12,6 +12,7 @@
          <DependedModule Id="CustomBattle"/>
          <DependedModule Id="StoryMode" />	 
          <DependedModule Id="Bannerlord.Harmony"/>
+         <DependedModule Id="Bannerlord.MBOptionScreen"/>
      </DependedModules>
      <SubModules>
          <SubModule>
