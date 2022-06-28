@@ -10,8 +10,8 @@
          <DependedModule Id="SandBoxCore"/>
          <DependedModule Id="Sandbox"/>
          <DependedModule Id="CustomBattle"/>
-         <DependedModule Id="StoryMode" />
-		 <DependedModule Id="Bannerlord.MBOptionScreen"/>
+         <DependedModule Id="StoryMode" />	 
+         <DependedModule Id="Bannerlord.Harmony"/>
      </DependedModules>
      <SubModules>
          <SubModule>

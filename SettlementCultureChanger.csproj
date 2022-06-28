@@ -239,6 +239,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Behaviours\SettlementCultureChangerBehaviour.cs" />
         <Compile Include="Constants.cs" />
         <Compile Include="PerSaveModSettings.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -247,6 +248,7 @@
     <ItemGroup>
         <PackageReference Include="Bannerlord.MCM" Version="4.3.16" IncludeAssets="compile" />
         <PackageReference Include="Bannerlord.ButterLib" Version="2.1.5" IncludeAssets="compile" />
+        <PackageReference Include="Lib.Harmony" Version="2.2.1" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
