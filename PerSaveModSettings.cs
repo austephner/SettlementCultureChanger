@@ -13,25 +13,46 @@ namespace SettlementCultureChanger
 
         #region GENERAL 
         
-        [SettingPropertyGroup("General")]
-        [SettingPropertyBool("Enabled")]
+        [SettingPropertyGroup("General", GroupOrder = 1)]
+        [SettingPropertyBool("Enabled", HintText = "When enabled, allows for this mod to control the conversion of a settlement's culture.")]
         public bool enabled { get; set; } = true;
 
         #endregion
 
         #region Automatic Conversion
 
-        [SettingPropertyGroup("Automatic Conversion")]
-        [SettingPropertyDropdown("Mode", HintText = "Determines how a settlement's culture is automatically converted over time.")]
-        public DropdownDefault<string> automaticConversionMode { get; set; } = new DropdownDefault<string>(
+        [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
+        [SettingPropertyBool("Enable Automatic Conversion", HintText = "When enabled, a settlement's culture will automatically convert to the \"Culture Source\" over time.", IsToggle = true)]
+        public bool enableAutomaticConversion { get; set; } = true;
+
+        [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
+        [SettingPropertyDropdown("Culture Source", HintText = "Determines where the target culture comes from.")]
+        public DropdownDefault<string> automaticConversionCultureSource { get; set; } = new DropdownDefault<string>(
             new string[]
             {
-                "(Default) Use Governor's Culture, Fallback to Owner's Culture",
-                "Governor's Culture Only",
-                "Owner's Culture Only",
-                "Disabled"
+                "Try Use Governor, Else Use Owner",
+                "Try Use Governor, Else Nothing",
+                "Owner Only"
             },
             0);
+        
+        [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
+        [SettingPropertyDropdown("Population Algorithm", HintText = "Determines what aspect of the population is used to calculate the cultural conversion.")]
+        public DropdownDefault<string> automaticConversionPopulationMode { get; set; } = new DropdownDefault<string>(
+            new string[]
+            {
+                "Random Conversion",
+                "Constant Conversion"
+            },
+            0);
+
+        [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
+        [SettingPropertyInteger("Min Civilians Per Day", 1, 1000)]
+        public int minCivilianConversionPerDay { get; set; } = 1;
+
+        [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
+        [SettingPropertyInteger("Max Civilians Per Day", 1, 1000)]
+        public int maxCivilianConversionPerDay { get; set; } = 5;
 
         #endregion
     }
