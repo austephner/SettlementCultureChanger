@@ -38,3 +38,13 @@ Extract the "Settlement Culture Changer" folder from within the `.zip` into your
 
 ## Developer Notes
 - When opening the solution, you may have to manually change/adjust the assembly references for all TaleWorld DLL's, Module DLL's, and MCM DLL's. This API doesn't assume that every dev has installed M&B2 into the same Steam directory.
+
+## Changelog
+- 1.0.1
+  - Removed some unused settings
+  - All available settings in the MCM are now functional
+- 1.0.0
+  - First full implementation is working as expected
+  - Automatic (timed and immediate) conversions now work for cultures
+- 0.0.1 
+  - Initial creation
