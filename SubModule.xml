@@ -4,7 +4,7 @@
      <Version value="v1.0.3"/>
      <SingleplayerModule value="true"/>
      <MultiplayerModule value="false"/>
-	 <Url value="https://github.com/austephner/SettlementCultureChanger-mb2b" />
+	 <Url value="https://www.nexusmods.com/mountandblade2bannerlord/mods/4163" />
      <DependedModules>
          <DependedModule Id="Native"/>
          <DependedModule Id="SandBoxCore"/>
