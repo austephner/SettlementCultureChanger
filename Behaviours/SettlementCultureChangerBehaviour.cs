@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using SettlementCultureChanger.Data;
 using SettlementCultureChanger.Extensions;
@@ -7,6 +8,8 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
+using TaleWorlds.SaveSystem;
 using TaleWorlds.TwoDimension;
 
 namespace SettlementCultureChanger.Behaviours
@@ -17,7 +20,7 @@ namespace SettlementCultureChanger.Behaviours
     {
         #region Private
 
-        private IDictionary<Settlement, CultureConversionData> _cultureConversionData = new Dictionary<Settlement, CultureConversionData>();
+        private Dictionary<Settlement, CultureConversionData> _cultureConversionData = new Dictionary<Settlement, CultureConversionData>();
 
         private Random _random = new Random();
         
@@ -55,11 +58,6 @@ namespace SettlementCultureChanger.Behaviours
 
         public override void SyncData(IDataStore dataStore)
         {
-            if (_cultureConversionData == null)
-            {
-                RecreateCultureConversionDataDictionary();
-            }
-
             dataStore.SyncData(Constants.CULTURE_CONVERSION_DATA_KEY, ref _cultureConversionData);
         }
         
@@ -122,24 +120,7 @@ namespace SettlementCultureChanger.Behaviours
             }
         }
 
-        private void RecreateCultureConversionDataDictionary()
-        {
-            _cultureConversionData = new Dictionary<Settlement, CultureConversionData>();
-
-            foreach (var settlement in Settlement.All)
-            {
-                if (!settlement.HasOwner())
-                {
-                    continue;
-                }
-                
-                _cultureConversionData.Add(
-                    settlement,
-                    CreateCultureConversionData(settlement));
-            }
-        }
-
-        private CultureConversionData CreateCultureConversionData(Settlement settlement)
+        private CultureConversionData CreateCultureConversionData()
         {
             var min = PerSaveModSettings.Instance?.minRandomDays ?? 0;
             var max = PerSaveModSettings.Instance?.maxRandomDays ?? 0;
@@ -149,12 +130,7 @@ namespace SettlementCultureChanger.Behaviours
             
             if (min > max) max = min;
 
-            return new CultureConversionData()
-            {
-                settlement = settlement,
-                conversionStartTime = Campaign.CurrentTime,
-                remainingDaysUntilConversion = min == max ? 0 : GetRandomInt(min,max)
-            }; 
+            return new CultureConversionData(min == max ? 0 : GetRandomInt(min, max));
         }
 
         private bool IsSettlementValidForDailyConversion(Settlement settlement)
@@ -183,8 +159,7 @@ namespace SettlementCultureChanger.Behaviours
             
             if (!_cultureConversionData.ContainsKey(settlement))
             {
-                _cultureConversionData.Add(settlement, CreateCultureConversionData(settlement));
-                return;
+                _cultureConversionData.Add(settlement, CreateCultureConversionData());
             }
 
             var cultureConversionData = _cultureConversionData[settlement];

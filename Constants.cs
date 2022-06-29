@@ -5,9 +5,12 @@
         #region Utility 
         
         public const string 
-            DISPLAY_VERSION = "1.0.2",
+            DISPLAY_VERSION = "1.0.3",
             DEBUG_PREFIX = "SCC-Debug:",
-            CULTURE_CONVERSION_DATA_KEY = "SCC:CultureConversionData";
+            CULTURE_CONVERSION_DATA_KEY = "SCC-CultureConversionData";
+
+        public const int
+            CULTURE_CONVERSION_DATA_TYPE_DEFINER_ID = 97616897;
         
         #endregion
 
