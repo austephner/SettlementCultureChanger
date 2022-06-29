@@ -40,6 +40,8 @@ Extract the "Settlement Culture Changer" folder from within the `.zip` into your
 - When opening the solution, you may have to manually change/adjust the assembly references for all TaleWorld DLL's, Module DLL's, and MCM DLL's. This API doesn't assume that every dev has installed M&B2 into the same Steam directory.
 
 ## Changelog
+- 1.0.2
+  - Changed default settings for conversion mode to "Everyone"
 - 1.0.1
   - Removed some unused settings
   - All available settings in the MCM are now functional

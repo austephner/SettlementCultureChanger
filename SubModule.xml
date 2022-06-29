@@ -1,7 +1,7 @@
  <Module>
      <Name value="Settlement Culture Changer"/>
      <Id value="SettlementCultureChanger"/>
-     <Version value="v1.0.1"/>
+     <Version value="v1.0.2"/>
      <SingleplayerModule value="true"/>
      <MultiplayerModule value="false"/>
 	 <Url value="https://github.com/austephner/SettlementCultureChanger-mb2b" />

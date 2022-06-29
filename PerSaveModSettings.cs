@@ -33,7 +33,7 @@ namespace SettlementCultureChanger
                 Constants.PLAYER_KINGDOM_ONLY_MODE,
                 Constants.EVERYONE_MODE
             },
-            0);
+            3);
 
         [SettingPropertyGroup("General", GroupOrder = 1)]
         [SettingPropertyDropdown("Notification Mode", HintText = "Determines which events will send messages.", Order = 12, RequireRestart = false)]
