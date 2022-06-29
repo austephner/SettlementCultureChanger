@@ -14,14 +14,18 @@ Allows for configurable realignment of a settlement's culture in Mount &amp; Bla
 - Choose alignment by Governor instead of Owner
 - Settlement menu option to determine current alignment progress
 
-## Requirements
-- Mod Configuration Menu V4
-- Harmony
+## Version Requirement Matrix
+_Note that this mod automatically comes packaged with the required MCM, ButterLib, and Harmony DLL's._
+
+| Component                   | Version Required | Included With Mod |
+|-----------------------------|------------------|-------------------|
+| Mount & Blade 2: Bannerlord | 1.7.x            | No                |
+| Mod Configuration Menu      | 4.7.x            | Yes               |
+| Harmony                     | 2.2.x            | Yes               |
+| ButterLib                   | 2.1.x            | Yes               |
 
 ## Installation
-1. Install Harmony
-2. Install MCM V4
-3. Extract the "Settlement Culture Changer" folder from within the `.zip` into your Modules folder, located inside the game's Steam folder.
+Extract the "Settlement Culture Changer" folder from within the `.zip` into your game's "Modules" folder.
 
 ## Usage
 1. Install the mod
