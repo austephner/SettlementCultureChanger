@@ -11,8 +11,11 @@ Allows for configurable realignment of a settlement's culture in Mount &amp; Bla
 - Tools/Cheats to convert culture with the click of a button
 
 #### Coming Soon & WIP
+- Localization support
+- Better wording for notification messages, menu options, etc. 
 - Choose alignment by Governor instead of Owner
 - Settlement menu option to determine current alignment progress
+- Settlement menu option to immediately set the culture
 
 ## Version Requirement Matrix
 _Note that this mod automatically comes packaged with the required MCM, ButterLib, and Harmony DLL's._
