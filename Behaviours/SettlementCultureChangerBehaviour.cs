@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using SettlementCultureChanger.Data;
 using SettlementCultureChanger.Extensions;
+using SettlementCultureChanger.Utilities;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.TwoDimension;
 
 namespace SettlementCultureChanger.Behaviours
 {
+    // todo: convert hard coded strings to localization keys
+    // todo: automatic conversion culture source defaults to owner, it needs to take governor into account
     public class SettlementCultureChangerBehaviour : CampaignBehaviorBase
     {
         #region Private
@@ -22,7 +25,23 @@ namespace SettlementCultureChanger.Behaviours
 
         #region Properties
 
-        public static bool debugLogging => PerSaveModSettings.Instance?.debugLogging ?? false;
+        public static bool enabled => PerSaveModSettings.Instance?.enabled == true;
+
+        public static bool debugLogging => PerSaveModSettings.Instance?.debugLogging == true;
+
+        public static bool enableAutomaticConversion => PerSaveModSettings.Instance?.enableAutomaticConversion == true;
+
+        public static AutomaticConversionMode automaticConversionMode => 
+            PerSaveModSettings.Instance?.automaticConversionMode?.SelectedValue?.ToAutomaticConversionMode() 
+            ?? AutomaticConversionMode.Timed;
+
+        public static ConversionMode conversionMode =>
+            PerSaveModSettings.Instance?.conversionMode?.SelectedValue?.ToConversionMode()
+            ?? ConversionMode.PlayerOnly;
+
+        public static ConversionMode conversionNotificationMode =>
+            PerSaveModSettings.Instance?.conversionNotificationMode?.SelectedValue?.ToConversionMode()
+            ?? ConversionMode.PlayerOnly;
 
         #endregion
         
@@ -30,7 +49,8 @@ namespace SettlementCultureChanger.Behaviours
         
         public override void RegisterEvents()
         {
-            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, DailyTick);
+            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, OnDailyTick);
+            CampaignEvents.OnSettlementOwnerChangedEvent.AddNonSerializedListener(this, OnSettlementOwnerChanged);
         }
 
         public override void SyncData(IDataStore dataStore)
@@ -39,17 +59,17 @@ namespace SettlementCultureChanger.Behaviours
             {
                 RecreateCultureConversionDataDictionary();
             }
-            
-            // todo: data synchronization
+
+            dataStore.SyncData(Constants.CULTURE_CONVERSION_DATA_KEY, ref _cultureConversionData);
         }
         
         #endregion
 
         #region Events
 
-        private void DailyTick()
+        private void OnDailyTick()
         {
-            if (PerSaveModSettings.Instance?.enabled == false)
+            if (!enabled)
             {
                 return;
             }
@@ -59,12 +79,26 @@ namespace SettlementCultureChanger.Behaviours
                 InformationManager.DisplayMessage(new InformationMessage($"{Constants.DEBUG_PREFIX} Doing daily culture conversion calculations."));
             }
 
-            if (PerSaveModSettings.Instance?.enableAutomaticConversion == true)
+            if (enableAutomaticConversion && automaticConversionMode == AutomaticConversionMode.Timed)
             {
                 foreach (var settlement in Settlement.All)
                 {
                     DailySettlementConversionUpdate(settlement);
                 }
+            }
+        }
+        
+        private void OnSettlementOwnerChanged(
+            Settlement settlement, 
+            bool openToClaim, 
+            Hero newOwner, 
+            Hero oldOwner, 
+            Hero capturedBy, 
+            ChangeOwnerOfSettlementAction.ChangeOwnerOfSettlementDetail ownershipChangeDetails)
+        {
+            if (automaticConversionMode == AutomaticConversionMode.Immediate)
+            {
+                ConvertSettlementCultureToOwnerCulture(settlement);
             }
         }
 
@@ -125,10 +159,16 @@ namespace SettlementCultureChanger.Behaviours
 
         private bool IsSettlementValidForDailyConversion(Settlement settlement)
         {
-            if (!settlement.HasOwner() || settlement.CurrentCultureMatchesOwnerCulture() ||
-                (PerSaveModSettings.Instance?.onlyConvertPlayerSettlements == true && !settlement.IsPlayerSettlement()))
+            if (!settlement.HasOwner() || settlement.CurrentCultureMatchesOwnerCulture())
             {
-                return false;
+                return false; 
+            }
+
+            switch (conversionMode)
+            {
+                case ConversionMode.PlayerOnly: return settlement.IsPlayerSettlement();
+                case ConversionMode.PlayerClanOnly: return settlement.ClanMatchesPlayerClan();
+                case ConversionMode.PlayerKingdomOnly: return settlement.ClanMatchesPlayerKingdom();
             }
 
             return true;
@@ -314,8 +354,25 @@ namespace SettlementCultureChanger.Behaviours
                 return;
             }
 
-            if (PerSaveModSettings.Instance?.notifyWhenPlayerSettlementsChangeCulture == true && 
-                Hero.MainHero != null && Hero.MainHero == settlement.Owner)
+            var showNotificationMessage = false;
+            
+            switch (conversionNotificationMode)
+            {
+                case ConversionMode.PlayerOnly:
+                    showNotificationMessage = Hero.MainHero != null && Hero.MainHero == settlement.Owner;
+                    break;
+                case ConversionMode.PlayerClanOnly:
+                    showNotificationMessage = Hero.MainHero != null && HeroComparisonUtils.CheckSameClan(Hero.MainHero, settlement.Owner);
+                    break;
+                case ConversionMode.PlayerKingdomOnly:
+                    showNotificationMessage = Hero.MainHero != null && HeroComparisonUtils.CheckSameKingdom(Hero.MainHero, settlement.Owner);
+                    break;
+                case ConversionMode.Everyone:
+                    showNotificationMessage = true;
+                    break;
+            }
+
+            if (showNotificationMessage)
             {
                 InformationManager.DisplayMessage(new InformationMessage($"{settlement.Name} has been cultured by the ways of their owner, {settlement.Owner.Name}"));
             }

@@ -13,5 +13,17 @@ namespace SettlementCultureChanger.Extensions
                 default: return Constants.UNKNOWN_STRING;
             }
         }
+
+        public static string ToLocalizationKey(this ConversionMode conversionMode)
+        {
+            switch (conversionMode)
+            {
+                default:
+                case ConversionMode.PlayerOnly: return Constants.PLAYER_ONLY_MODE;
+                case ConversionMode.PlayerClanOnly: return Constants.PLAYER_CLAN_ONLY_MODE;
+                case ConversionMode.PlayerKingdomOnly: return Constants.PLAYER_KINGDOM_ONLY_MODE;
+                case ConversionMode.Everyone: return Constants.EVERYONE_MODE;
+            }
+        }
     }
 }

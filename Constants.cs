@@ -4,27 +4,31 @@
     {
         #region Utility 
         
-        public const string DISPLAY_VERSION = "0.0.1";
-
-        public const string DEBUG_PREFIX = "SCC-Debug:";
+        public const string 
+            DISPLAY_VERSION = "1.0.0",
+            DEBUG_PREFIX = "SCC-Debug:",
+            CULTURE_CONVERSION_DATA_KEY = "SCC:CultureConversionData";
         
         #endregion
 
         #region Calculations
 
-        public const int MIN_RANDOM_DAYS = 0;
-
-        public const int MAX_RANDOM_DAYS = 1000;
+        public const int 
+            MIN_RANDOM_DAYS = 0,
+            MAX_RANDOM_DAYS = 1000;
 
         #endregion
 
         #region Localization
-        
-        public const string UNKNOWN_STRING = "???";
 
-        public const string TIMED_AUTOMATIC_CONVERSION_MODE = "Convert After Random Amount of Days";
-
-        public const string IMMEDIATE_AUTOMATIC_CONVERSION_MODE = "Convert Immediately Upon Ownership Change";
+        public const string
+            UNKNOWN_STRING = "???",
+            TIMED_AUTOMATIC_CONVERSION_MODE = "Convert After Random Amount of Days",
+            IMMEDIATE_AUTOMATIC_CONVERSION_MODE = "Convert Immediately Upon Ownership Change",
+            PLAYER_ONLY_MODE = "Player Only",
+            PLAYER_CLAN_ONLY_MODE = "Player Clan Only",
+            PLAYER_KINGDOM_ONLY_MODE = "Player Kingdom Only",
+            EVERYONE_MODE = "Everyone";
 
         #endregion
     }

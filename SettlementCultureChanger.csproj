@@ -242,13 +242,15 @@
         <Compile Include="Behaviours\SettlementCultureChangerBehaviour.cs" />
         <Compile Include="Constants.cs" />
         <Compile Include="Data\AutomaticConversionMode.cs" />
+        <Compile Include="Data\ConversionMode.cs" />
         <Compile Include="Data\CultureConversionData.cs" />
-        <Compile Include="Extensions\AutomaticConversionModeExtensions.cs" />
+        <Compile Include="Extensions\EnumerationExtensions.cs" />
         <Compile Include="Extensions\SettlementExtensions.cs" />
         <Compile Include="Extensions\StringExtensions.cs" />
         <Compile Include="PerSaveModSettings.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="SettlementCultureChangerSubModule.cs" />
+        <Compile Include="Utilities\HeroComparisonUtils.cs" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Bannerlord.MCM" Version="4.7.4" IncludeAssets="compile" />

@@ -34,5 +34,17 @@ namespace SettlementCultureChanger.Extensions
         {
             return settlement.HasOwner() && settlement.Culture == settlement.Owner.Culture;
         }
+
+        public static bool ClanMatchesPlayerClan(this Settlement settlement)
+        {
+            return settlement.HasClan() && settlement.HasOwner() && Hero.MainHero != null &&
+                   Hero.MainHero.Clan != null && settlement.OwnerClan == Hero.MainHero.Clan;
+        }
+        
+        public static bool ClanMatchesPlayerKingdom(this Settlement settlement)
+        {
+            return settlement.HasClan() && settlement.HasOwner() && Hero.MainHero != null &&
+                   Hero.MainHero.Clan?.Kingdom != null && settlement.OwnerClan?.Kingdom == Hero.MainHero.Clan?.Kingdom;
+        }
     }
 }

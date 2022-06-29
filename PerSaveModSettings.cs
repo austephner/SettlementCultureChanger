@@ -21,16 +21,32 @@ namespace SettlementCultureChanger
         
         [SettingPropertyGroup("General", GroupOrder = 1)]
         [SettingPropertyBool("Debug Logging", HintText = "When enabled, this mod will regularly post debug messages in various ways.", Order = 10, RequireRestart = false)]
-        public bool debugLogging { get; set; } = true;
+        public bool debugLogging { get; set; } = false;
 
         [SettingPropertyGroup("General", GroupOrder = 1)]
-        [SettingPropertyBool("Notify when settlements' culture changes for player", HintText = "When enabled, the a message will be logged stating a settlement owned by a player has converted their culture.", Order = 11, RequireRestart = false)]
-        public bool notifyWhenPlayerSettlementsChangeCulture { get; set; } = true;
-        
+        [SettingPropertyDropdown("Conversion Mode", HintText = "Determines whose settlements can be converted by this mod.", Order = 11, RequireRestart = false)]
+        public DropdownDefault<string> conversionMode { get; set; } = new DropdownDefault<string>(
+            new string[]
+            {
+                Constants.PLAYER_ONLY_MODE,
+                Constants.PLAYER_CLAN_ONLY_MODE,
+                Constants.PLAYER_KINGDOM_ONLY_MODE,
+                Constants.EVERYONE_MODE
+            },
+            0);
+
         [SettingPropertyGroup("General", GroupOrder = 1)]
-        [SettingPropertyBool("Only convert player settlements", HintText = "When enabled, only player settlements will be converted.", Order = 12, RequireRestart = false)]
-        public bool onlyConvertPlayerSettlements { get; set; } = true;
-        
+        [SettingPropertyDropdown("Notification Mode", HintText = "Determines which events will send messages.", Order = 12, RequireRestart = false)]
+        public DropdownDefault<string> conversionNotificationMode { get; set; } = new DropdownDefault<string>(
+            new string[]
+            {
+                Constants.PLAYER_ONLY_MODE,
+                Constants.PLAYER_CLAN_ONLY_MODE,
+                Constants.PLAYER_KINGDOM_ONLY_MODE,
+                Constants.EVERYONE_MODE
+            },
+            0);
+
         #endregion
 
         #region Automatic Conversion
@@ -39,16 +55,16 @@ namespace SettlementCultureChanger
         [SettingPropertyBool("Enable Automatic Conversion", HintText = "When enabled, a settlement's culture will automatically convert to the \"Culture Source\" over time.", IsToggle = true, Order = 1, RequireRestart = false)]
         public bool enableAutomaticConversion { get; set; } = true;
 
-        [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
-        [SettingPropertyDropdown("Culture Source", HintText = "Determines where the target culture comes from.", Order = 2, RequireRestart = false)]
-        public DropdownDefault<string> automaticConversionCultureSource { get; set; } = new DropdownDefault<string>(
-            new string[]
-            {
-                "Prefer Governor, Fallback to Owner",
-                "Governor Only",
-                "Owner Only"
-            },
-            0);
+        // [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
+        // [SettingPropertyDropdown("Culture Source (WIP)", HintText = "Determines where the target culture comes from.", Order = 2, RequireRestart = false)]
+        // public DropdownDefault<string> automaticConversionCultureSource { get; set; } = new DropdownDefault<string>(
+        //     new string[]
+        //     {
+        //         "Prefer Governor, Fallback to Owner",
+        //         "Governor Only",
+        //         "Owner Only"
+        //     },
+        //     0);
         
         [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
         [SettingPropertyDropdown("Conversion Mode", HintText = "Determines how settlement cultures are converted.", Order = 3, RequireRestart = false)]
