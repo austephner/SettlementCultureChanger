@@ -23,6 +23,14 @@ namespace SettlementCultureChanger
         [SettingPropertyBool("Debug Logging", HintText = "When enabled, this mod will regularly post debug messages in various ways.", Order = 10, RequireRestart = false)]
         public bool debugLogging { get; set; } = true;
 
+        [SettingPropertyGroup("General", GroupOrder = 1)]
+        [SettingPropertyBool("Notify when settlements' culture changes for player", HintText = "When enabled, the a message will be logged stating a settlement owned by a player has converted their culture.", Order = 11, RequireRestart = false)]
+        public bool notifyWhenPlayerSettlementsChangeCulture { get; set; } = true;
+        
+        [SettingPropertyGroup("General", GroupOrder = 1)]
+        [SettingPropertyBool("Only convert player settlements", HintText = "When enabled, only player settlements will be converted.", Order = 12, RequireRestart = false)]
+        public bool onlyConvertPlayerSettlements { get; set; } = true;
+        
         #endregion
 
         #region Automatic Conversion
@@ -47,10 +55,18 @@ namespace SettlementCultureChanger
         public DropdownDefault<string> automaticConversionMode { get; set; } = new DropdownDefault<string>(
             new string[]
             {
-                "Convert Over Random Time Duration",
-                "Convert Immediately When Ownership Changed"
+                Constants.TIMED_AUTOMATIC_CONVERSION_MODE,
+                Constants.IMMEDIATE_AUTOMATIC_CONVERSION_MODE
             },
             0);
+
+        [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
+        [SettingPropertyInteger("Min Random Days", Constants.MIN_RANDOM_DAYS, Constants.MAX_RANDOM_DAYS, HintText = "The minimum amount of random days for time based culture conversion.", Order = 4, RequireRestart = false)]
+        public int minRandomDays { get; set; } = 10;
+
+        [SettingPropertyGroup("Automatic Conversion", GroupOrder = 2)]
+        [SettingPropertyInteger("Max Random Days", Constants.MIN_RANDOM_DAYS, Constants.MAX_RANDOM_DAYS, HintText = "The maximum amount of random days for time based culture conversion.", Order = 5, RequireRestart = false)]
+        public int maxRandomDays { get; set; } = 50;
 
         #endregion
 
@@ -63,6 +79,14 @@ namespace SettlementCultureChanger
         [SettingPropertyGroup("Tools & Cheats", GroupOrder = 3)]
         [SettingPropertyButton("Convert All Player Settlements to Owner Culture", HintText = "Immediately converts all player's settlements to their owner's culture.", RequireRestart = false, Content = "Set")]
         public Action convertAllPlayerSettlementsToOwnerCulture { get; set; } = SettlementCultureChangerBehaviour.ConvertAllPlayerSettlementsToOwnerCulture;
+        
+        [SettingPropertyGroup("Tools & Cheats", GroupOrder = 3)]
+        [SettingPropertyButton("Convert All Settlements in Player Clan to Owner Culture", HintText = "Immediately converts all settlements in the player's clan to their owner's culture.", RequireRestart = false, Content = "Set")]
+        public Action convertAllPlayerClanSettlementsToOwnerCulture { get; set; } = SettlementCultureChangerBehaviour.ConvertAllSettlementsInPlayersClanToOwnerCulture;
+
+        [SettingPropertyGroup("Tools & Cheats", GroupOrder = 3)]
+        [SettingPropertyButton("Convert All Settlements in Player Kingdom to Owner Culture", HintText = "Immediately converts all settlements in the player's kingdom to their owner's culture.", RequireRestart = false, Content = "Set")]
+        public Action convertAllPlayerKingdomSettlementsToOwnerCulture { get; set; } = SettlementCultureChangerBehaviour.ConvertAllSettlementsInPlayersKingdomToOwnerCulture;
 
         #endregion
     }
